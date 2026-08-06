@@ -105,7 +105,6 @@ console.log(loafCount);
 // Two variables, `a` and `b`, hold different values. Swap their contents using a third,
 // temporary variable, and log both afterwards to prove the swap succeeded. This is the oldest
 // exercise in programming, and it still earns its place.
-
 let a = 10;
 let b = 20;
 let tempValue = a;
