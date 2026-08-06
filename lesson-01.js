@@ -47,7 +47,8 @@ console.log("Hello, world!");
 // Run your greeting line in the Chrome DevTools Console. In a comment, record one way the
 // experience matched Node and one way it differed.
 
-// It matched Node because both environments executed the same JavaScript statement and printed the greeting, but it differed because the browser console runs in a web page context while Node runs in a terminal process.
+// It matched Node because both environments executed the same JavaScript statement and printed the greeting, but it differed because the
+//  browser console runs in a web page context while Node runs in a terminal process.
 
 // TODO: Part five.
 // From a folder that does not contain the file, deliberately run `node lesson-01.js` so that
