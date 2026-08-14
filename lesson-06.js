@@ -167,7 +167,7 @@ console.log("Largest:", largest);
 // case with `toLowerCase`.
 
 // Reverse a string with a loop
-const testString = "hello";
+const testString = "hello, this is my abuereta";
 let reversed = "";
 for (let i = testString.length - 1; i >= 0; i--) {
     reversed += testString[i];
