@@ -10,6 +10,23 @@
 // runtime, and a `describe` method that returns one sentence built from the instance's own
 // properties through `this`. Create two instances with `new` and log both descriptions.
 
+class Artist {
+  constructor(name, genre, total) {
+    this.name = name;
+    this.genre = genre;
+    this.total = total;
+  }
+
+  describe() {
+    return `${this.name} performs ${this.genre} with a total runtime of ${this.total}.`;
+  }
+}
+
+const firstArtist = new Artist("Johnny Cash", "Country", "15:40");
+const secondArtist = new Artist("Asake", "Afrobeats", "14:08");
+
+console.log(firstArtist.describe());
+console.log(secondArtist.describe());
 
 // TODO: Part two.
 // The file provides the artists as an array of plain objects. Loop over it with `for...of`,
@@ -25,6 +42,14 @@ const artistData = [
   { name: "Johnny Cash", genre: "Country", total: "15:40" },
 ];
 
+const artists = [];
+for (const data of artistData) {
+  artists.push(new Artist(data.name, data.genre, data.total));
+}
+
+for (const artist of artists) {
+  console.log(artist.describe());
+}
 
 // TODO: Part three.
 // The file contains three short snippets: a class call that is missing `new`, an arrow
@@ -34,12 +59,15 @@ const artistData = [
 
 // * Three snippets. Predict each outcome in a comment, then verify one at a time.
 // ! Snippet one, a class call missing new. Uncomment after part one, predict first:
+// Prediction: TypeError, because classes must be called with `new`.
 // const broken = Artist("Pinkfong", "Children's music", "11:31");
 // ! Snippet two, an arrow function used as a method that reads this:
+// Prediction: it does not use the object as `this`, so the result is "undefined by undefined".
 // const single = { title: "Hurt", artist: "Johnny Cash", describe: () => `${this.title} by ${this.artist}` };
 // console.log(single.describe());
 // * Snippet three, the correct call. Uncomment after part one:
-// console.log(new Artist("Asake", "Afrobeats", "14:08").describe());
+// Prediction: it logs Asake's description successfully.
+console.log(new Artist("Asake", "Afrobeats", "14:08").describe());
 
 
 // TODO: Part four.
@@ -47,6 +75,24 @@ const artistData = [
 // constructor that calls `super` first, and overrides `describe` so that it builds on the
 // superclass version through `super.describe()`. Promote one artist and log the result.
 
+class FeaturedArtist extends Artist {
+  constructor(name, genre, total, blurb) {
+    super(name, genre, total);
+    this.blurb = blurb;
+  }
+
+  describe() {
+    return `${super.describe()} Featured: ${this.blurb}`;
+  }
+}
+
+const featuredArtist = new FeaturedArtist(
+  "Pinkfong",
+  "Children's music",
+  "11:31",
+  "Known for creating joyful songs for children."
+);
+console.log(featuredArtist.describe());
 
 // TODO: Part five.
 // The file ends with a constructor function and two prototype method assignments, working code
@@ -55,16 +101,24 @@ const artistData = [
 // class.
 
 // * Working pre-2015 code, provided. Do not rewrite it, annotate it:
+// Equivalent class constructor: constructor(name, genre) { ... }
 function ArtistOld(name, genre) {
   this.name = name;
   this.genre = genre;
 }
+// Equivalent class method: describe() { ... }
 ArtistOld.prototype.describe = function () {
   return `${this.name}, ${this.genre}`;
 };
+// Equivalent class method: tag() { ... }
 ArtistOld.prototype.tag = function () {
   return `#${this.genre.toLowerCase().replaceAll(" ", "-").replaceAll("'", "")}`;
 };
+
+const oldArtist = new ArtistOld("Johnny Cash", "Country");
+console.log(oldArtist.describe());
+console.log(oldArtist.tag());
+console.log(firstArtist.describe());
 
 
 // TODO: Part six.
@@ -73,6 +127,12 @@ ArtistOld.prototype.tag = function () {
 // it returns. The `get` keyword from the extension is your alternative if getters caught your
 // interest.
 
+Artist.named = function (artistList, name) {
+  return artistList.find(artist => artist.name === name);
+};
+
+const namedArtist = Artist.named(artists, "Asake");
+console.log(namedArtist.describe());
 
 // TODO: Save deliberately, commit with a clear message, push the branch, and open a pull request
 // into main.
