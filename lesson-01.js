@@ -18,27 +18,65 @@
 // more than one operator across them. Copy the complete session transcript and paste it into
 // `lesson-01.js` as a comment block where the question asks for it.
 
+/*
+> 5 + 3
+8
+> 10 * 2 + 4
+24
+> 20 / 4
+5
+> 7 - 2 * 3
+1
+> 
+*/
 
 // TODO: Part two.
 // Write a `console.log` line in `lesson-01.js` that prints a greeting, save the file
 // deliberately, and run it with `node lesson-01.js`.
 
+console.log("Hello, world!");
 
 // TODO: Part three.
 // Change the greeting text, run the file again without saving, and observe that the output has
 // not changed. Save and run once more, then describe in a one-sentence comment what happened
 // and why.
 
+// The output stayed the same until I saved the file because Node reads the latest saved version of the script when it starts.
 
 // TODO: Part four.
 // Run your greeting line in the Chrome DevTools Console. In a comment, record one way the
 // experience matched Node and one way it differed.
 
+// It matched Node because both environments executed the same JavaScript statement and printed the greeting, but it differed because the
+//  browser console runs in a web page context while Node runs in a terminal process.
 
 // TODO: Part five.
 // From a folder that does not contain the file, deliberately run `node lesson-01.js` so that
 // the terminal reports it cannot find the file. Paste that error transcript as a comment, then
 // explain in one sentence how you resolved it.
+
+/*
+C:\Users\shyak\Documents\startupistan-practice\maison-sarah> node lesson-01.js
+node:internal/modules/cjs/loader:1520
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\Users\shyak\Documents\startupistan-practice\maison-sarah\lesson-01.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:27)
+    at Module._load (node:internal/modules/cjs/loader:1071:27)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:1520:33)
+    at node:internal/main/run_main_module:33:67 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.18.0
+*/
+
+// I resolved it by switching to the folder that contains lesson-01.js and running the command there.
 
 
 // TODO: Save the file, commit your work with a clear message, push the branch, and open a pull
